@@ -1,0 +1,9 @@
+django==3.0
+pymysql
+python-environ
+django-rest-framework
+django-ckeditor==6.1.0
+djangorestframework-jwt==1.11.0
+pillow
+django-crontab
+django-db-logger
