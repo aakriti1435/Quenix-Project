@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Psychology</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="" />
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
+    <link
+        rel="stylesheet"
+        href="{% static 'frontend-asset/css/helpers-plugin.css' %}"
+    />
+    <link
+        rel="stylesheet"
+        href="{% static 'frontend-asset/fonts/fontawesome/css/all.min.css' %}"
+    />
+    <link
+        rel="stylesheet"
+        href="{% static 'frontend-asset/css/flash.css' %}"
+    />
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-digital-trend.css' %}">
+</head>
+<body>
+    <!-- MENU BAR -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'frontend:index' %}">
+              PSYCHOLOGY
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="{% url 'frontend:abouts' %}" class="nav-link smoothScroll">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'contact:contact_form' %}" class="nav-link smoothScroll">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'ratings:rate_us' %}" class="nav-link smoothScroll">Rate Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'accounts:login' %}" class="nav-link smoothScroll">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="page-wrapper">
+        {% if messages %}
+        <div class="flash animate--drop-in-fade-out">
+            {% for message in messages %}
+            <div class="flash__icon">
+                <i class="icon far fa-check-circle"></i>
+            </div>
+
+            <p class="flash__body">{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </main>

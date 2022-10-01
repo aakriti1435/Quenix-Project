@@ -1,0 +1,92 @@
+{% include 'admin-includes/header.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="content-body">
+   <!-- row -->
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-12">
+            <div class="card">
+               <div class="card-header d-flex justify-content-between align-items-center">
+                  <h4 class="card-title">Database Management</h4>
+                  <div class="addlocation">
+                     <a class="mr-2" href="{% url 'backup:database_backup' %}">Create Backup<i
+                           class="far fa-plus ml-1"></i></a>
+                     <a href="{% url 'backup:database_schema' %}">Create Structure<i class="far fa-plus ml-1"></i></a>
+                  </div>
+               </div>
+               <div class="card-body">
+                  <div class="table-responsive">
+                     <table class="sortable table table-responsive-md">
+                        <thead>
+                           <tr>
+                              <th>Name</th>
+                              <th>Created on</th>
+                              <th>Type</th>
+                              <th>Actions</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           {% if backup %}
+                           {% for i in backup %}
+                           <tr>
+                              <td><strong>{{i.name}}</strong></td>
+                              <td>
+                                 <script>
+                                    var d = ConvertGTime("{{ i.created_on|date:'Y-m-d' }}","{{ i.created_on|time:'H:i' }}");
+                                    document.write(d);
+                                 </script>
+                              </td>
+                              {% if i.is_schema %}
+                              <td><span class="badge badge-danger" style="width:100px">STRUCTURE</span></td>
+                              {% else %}
+                              <td><span class="badge badge-primary" style="width:100px">BACKUP</span></td>
+                              {% endif %}
+                              <td>
+                                 <div class="d-flex">
+                                    <a onclick="return confirm('Are you sure to delete this?')" href="{% url 'backup:delete_backup' %}?id={{i.id}}" id="delete-btn" style="margin-right:5px"
+                                       class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                    <a href="{% url 'backup:downloadFile' %}?id={{i.id}}"
+                                       class="btn btn-info shadow btn-xs sharp"><i class="fa fa-download"
+                                          style="margin-top:6px"></i></a>
+                                 </div>
+                              </td>
+                           </tr>
+                           {% endfor %}
+                           {% else %}
+                           <td align="center" colspan="5">No Data Found</td>
+                           {% endif %}
+                        </tbody>
+                     </table>
+                     {% if backup.has_other_pages %}
+                     <ul class="pagination">
+                        {% if backup.has_previous %}
+                        <li><a href="?page={{ backup.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                        <li class="disabled"><span>&laquo;</span></li>
+                        {% endif %}
+                        {% for i in backup.paginator.page_range %}
+                        {% if backup.number == i %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if backup.has_next %}
+                        <li><a href="?page={{ backup.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                        {% endif %}
+                     </ul>
+                     {% endif %}
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
+{% include 'admin-includes/footer.html' %}

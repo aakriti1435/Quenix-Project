@@ -1,0 +1,93 @@
+{% include "admin-includes/header.html" %}
+{% block content %}
+{% load static %}
+{% load extras %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="card-title">Edit User</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="profile-tab">
+                            <div class="settings-form">
+                                <form id="edit-profile" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Full Name</label>
+                                            <input type="text"{% if user.full_name %} value="{{ user.full_name }}" {% endif %} onkeypress="return /[a-zA-Z\s]/i.test(event.key)" name="full_name" placeholder="Please Enter Name"
+                                                maxlength="50" required class="form-control form-control-lg">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Username</label>
+                                            <input type="text" value="{{ user.username }}" maxlength="50" name="username" id="username" class="form-control form-control-lg">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Email</label>
+                                            <input type="text" value="{{ user.email }}" name="email" class="form-control form-control-lg">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Choose File</label>
+                                            <input type="file" placeholder="Upload Profile Pic" name="profile_pic" id="profile_pic" class="form-control form-control-lg">
+                                            <p class="er"></p>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <button class="btn btn-primary" type="submit">Save</button></a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% include "admin-includes/footer.html" %}
+<script type="text/javascript">
+    $("#edit-profile").validate({
+        rules: {
+            full_name: {
+                required: true,
+                normalizer: function( value ) {
+                    return $.trim( value );
+                }
+            },
+            email: {
+                required: true,
+                email: true,
+                normalizer: function( value ) {
+                    return $.trim( value );
+                }
+            },
+            username: {
+                required: true,
+                normalizer: function( value ) {
+                    return $.trim( value );
+                }
+            },
+            profile_pic: {
+                accept: "jpg,png,jpeg,gif"
+            }
+        },
+        messages: {
+            full_name: {
+                required: "Please enter name",
+            },
+            email: {
+                required: "Please enter email",
+            },
+            username: {
+                required: "Please enter username",
+            },
+            profile_pic: {
+                accept: "Please upload file in these format only (jpg, jpeg, png, gif)"
+            }
+        }
+    });
+</script>

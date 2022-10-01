@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="">
+    <title>Psychology</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="" />
+    <link href="{%  static 'admin-asset/css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet " type="text/css" href="{% static 'admin-asset/fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css" />
+    <link rel="stylesheet" href="{% static 'frontend-asset/css/flash.css' %}" />
+</head>
+
+<body>
+    <div id="main-wrapper">
+        <div class="nav-header">
+            <a href=" {% url 'frontend:index' %} " class="brand-logo justify-content-center">
+                PSYCHOLOGY
+            </a>
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            <div class="dashboard_bar">
+                                {% if head_title %}{{head_title}}{% else %}Dashboard{% endif %}
+                            </div>
+                        </div>
+                        <ul class="navbar-nav header-right">
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="javascript:;" role="button" data-toggle="dropdown">
+                                    {% if request.user.profile_pic %}
+                                    <img src="{{request.user.profile_pic.url}}" width="20" alt="" />
+                                    {% else %}
+                                    <img src="{% static 'admin-asset/images/dp.png' %} " width="20" alt="" />
+                                    {% endif %}
+                                    <div class="header-info">
+                                        <span>Hello,<strong> {{ request.user.username }}</strong></span>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="{% url 'accounts:view_user' request.user.id %}"
+                                        class="dropdown-item ai-icon">
+                                        <span id="icon-user1" class="far fa-user"></span>
+                                        <span class="ml-2">Profile </span>
+                                    </a>
+                                    <a href="{% url 'accounts:Password_Change' %}" class="dropdown-item ai-icon">
+                                        <span id="icon-logout" class="far fa-user-edit"></span>
+                                        <span class="ml-1">Change Password</span>
+                                    </a>
+                                    <a href="{% url 'accounts:logout' %}" class="dropdown-item ai-icon">
+                                        <span id="icon-logout" class="far fa-sign-out-alt"></span>
+                                        <span class="ml-2">Logout </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="deznav">
+            <div class="deznav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li  {% if not head_title %}class="mm-active"{% endif %}>
+                        <a href="{% url 'frontend:index' %}" aria-expanded="false">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li {% if head_title == "Services Management" %}class="mm-active"{% endif %}>
+                        <a href="{% url 'services:services_list' %}">
+                            <i class="far fa-ballot-check"></i>
+                            <span class="nav-text ml-1">Services</span>
+                        </a>
+                    </li>
+                    <li {% if head_title == "Contacts Management" %}class="mm-active"{% endif %}>
+                        <a href="{% url 'contact:contacts_list' %}">
+                            <i class="fas fa-address-book"></i>
+                            <span class="nav-text ml-1">Contacts</span>
+                        </a>
+                    </li>
+                    <li {% if head_title == "Ratings and Reviews" %}class="mm-active"{% endif %}>
+                        <a href="{% url 'ratings:ratings_list' %}">
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="nav-text ml-1">Reviews</span>
+                        </a>
+                    </li>
+                    <li {% if head_title == "Pages" or head_title == "Backup" or head_title == "Login History" %}class="mm-active"{% endif %}>
+                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="fas fa-cogs"></i>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{% url 'page:page_list' %} ">Pages</a></li>
+                            <li><a href="{% url 'backup:backup' %} ">Backup</a></li>
+                            <li><a href="{% url 'accounts:login_history' %} ">Login History</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script src="{% static 'admin-asset/js/moment.min.js' %}"></script>
+        <script>
+            function ConvertGTime(createdate, createtime) {
+                d = createdate + "T" + createtime + "Z";
+                const date = d;
+                const local = moment.utc(date).local().format("lll");
+                return local;
+            }
+        </script>
+        {% if messages %}
+            <div class="flash animate--drop-in-fade-out">
+            {% for message in messages %}
+                <div class="flash__icon">
+                    <i class="icon far fa-check-circle"></i>
+                </div>
+                
+                <p class="flash__body">
+                    {{ message }}
+                </p>
+                {% endfor %}
+            </div>
+        {% endif %}

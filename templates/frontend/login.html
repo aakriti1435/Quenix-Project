@@ -1,0 +1,100 @@
+{% include 'frontend/includes/header.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'frontend-asset/css/pages-css/step.css' %}" />
+<link rel="stylesheet" href="{% static 'frontend-asset/css/theme-style.css' %}" />
+<!--Home Banner Section-->
+<style>
+    .error{
+        color:red;
+    }
+    .eye {
+        position: absolute;
+        top: 22px;
+        right: 27px;
+    }
+    .password{
+        position:relative;
+    }
+    .social-link li a{
+        border: 1px solid blue;
+    }
+    body{
+        background-color: #dff7ff !important;
+    }
+    .form-control{
+        background-color: #fff !important;
+        background: #fff !important;
+        border: 2px solid #fff !important;
+    }
+</style>
+<div class="signup-page step-page">
+    <div class="container">
+        <div class="form-wrapper text-center">
+            <h1 class="mb-3" style="color: #1126ef;">Login</h1>
+            <div class="form-inner">
+                <form id="login" method="POST" class="contact-us-form login-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="email" maxlength="50" class="form-control" id="email" placeholder="Enter Email" required>
+                        <p class="er error" style="color:red;font-weight:500;display: none;"></p>
+                    </div>
+                    <div class="form-group password">
+                        <input type="password" name="password" class="form-control" id="password"
+                            placeholder="Enter Password" required>
+                        <span id="password" type="checkbox" data-attr="password" class="eyeicon">
+                            <i class="eye fas fa-eye-slash"></i>
+                        </span>
+                    </div>
+                    <div class="button-wrap">
+                        <button class="btn btn-theme secondary-btn w-100 mt-4">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'frontend/includes/footer.html' %}
+<script type="text/javascript">
+    $(document).on('click', '.eyeicon', function () {
+        var x = document.getElementById($(this).attr("data-attr"));
+        if (x.getAttribute('type') == "password") {
+            $(this).find(".eye").removeClass("fas fa-eye-slash");
+            $(this).find(".eye").addClass("fas fa-eye");
+            x.removeAttribute("type");
+            x.setAttribute("type", "text");
+        } else {
+            x.removeAttribute("type");
+            x.setAttribute('type', 'password');
+            $(this).find(".eye").removeClass("fas fa-eye");
+            $(this).find(".eye").addClass("fas fa-eye-slash");
+        }
+    })
+</script>
+<script type="text/javascript">
+    $("#login").validate({
+        rules: {
+            email: {
+                required: true,
+                normalizer: function( value ) {
+                    return $.trim( value );
+                },
+                email: true
+            },
+            password: {
+                required: true,
+                minlength: 8,
+            },
+        },
+        messages: {
+            email: {
+                required: "Please enter email",
+            },
+            password: {
+                required: "Please enter password",
+                minlength: jQuery.validator.format("At least {0} characters required!")
+            },
+        }
+    });
+</script>

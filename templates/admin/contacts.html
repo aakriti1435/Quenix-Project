@@ -1,0 +1,95 @@
+{% include "admin-includes/header.html" %}
+{% block content %}
+{% load static %}
+<div class="content-body">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-header d-flex justify-content-between align-items-center">
+						<h4 class="card-title">Contacts</h4>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="sortable table table-responsive-md">
+								<thead>
+									<tr>
+										<th><strong>ID</strong></th>
+										<th><strong>Subject</strong></th>
+										<th><strong>Message</strong></th>
+										<th><strong>Created By</strong></th>
+										<th><strong>Created On </strong></th>
+										<th><strong>Actions </strong></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										{% if contacts %}
+										{% for contact in contacts %}
+										<td><strong>{{ contact.id }}</strong></td>
+										<td>{{ contact.subject }}</td>
+										<td>{{ contact.message | truncatewords:5 }}</td>
+										<td><a href="{% url 'accounts:view_user' contact.created_by.id %}">{{ contact.created_by.mobile_no }}</a></td>
+										<td>{{ contact.created_on }}</td>
+										<td>
+											<div class="d-flex">
+                                                <a href="{% url 'accounts:view_contact' contact.id %}" title="View Details" id="update-btn" class="btn btn-success shadow btn-xs sharp mr-1">
+													<i class="fa fa-eye"></i></a>
+												<a data-attr="{{contact.id}}" id="delete-btn" class="btn btn-danger shadow btn-xs sharp mr-1">
+													<i class="fa fa-trash"></i></a>
+											</div>
+										</td>
+									</tr>
+									{% endfor %}
+									{% else %}
+									<td colspan="7" align=center> No Data Found </td>
+									{% endif %}
+								</tbody>
+							</table>
+							{% if users.has_other_pages %}
+							<ul class="pagination">
+								{% if users.has_previous %}
+								<li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+								{% else %}
+								<li class="disabled"><span>&laquo;</span></li>
+								{% endif %}
+								{% for i in users.paginator.page_range %}
+								{% if users.number == i %}
+								<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+								{% else %}
+								<li><a href="?page={{ i }}">{{ i }}</a></li>
+								{% endif %}
+								{% endfor %}
+								{% if users.has_next %}
+								<li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+								{% else %}
+								<li class="disabled"><span>&raquo;</span></li>
+								{% endif %}
+							</ul>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% include "admin-includes/footer.html" %}
+<script>
+    $(document).on('click', '#delete-btn', function () {
+        if (confirm("Are you sure to delete this contact?")) {
+            var id = $(this).attr('data-attr');
+            $.ajax({
+                url: "{% url 'accounts:delete_contact' %}",
+                type: 'get',
+                data: {
+                    'id': id
+                },
+                success: function (result) {
+                    location.reload();
+                }
+            });
+        }
+    });
+</script>

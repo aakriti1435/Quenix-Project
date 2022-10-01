@@ -1,0 +1,111 @@
+{% include "admin-includes/header.html" %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-right float-md-right">
+                            <div class="addlocation mb-3">
+                                {% if not user.state == 3%}
+                                <a class="mr-2" href="{% url 'accounts:edit_user' user.id %}">Edit Profile</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="profile-tab d-flex position-relative">
+                            <div class="profile-imgbox mx-auto mx-md-0 mr-md-4">
+                                {% if user.profile_pic %}
+                                <img src="{{ user.profile_pic.url }}" alt="image">
+                                {% else %}
+                                <img src="{% static 'admin-asset/images/dp.png' %}" alt="image">
+                                {% endif %}
+                            </div>
+                            <div class="profile-personal-info w-100">
+                                <h4 class="text-primary mb-4">Personal Information</h4>
+                                {% if not user.is_superuser %}
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Full Name <span class="d-none d-sm-block float-sm-right">:</span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-lg-9"><span>
+                                            {% if user.full_name %}
+                                            {{user.full_name}}
+                                            {% else %} - {% endif %}</span>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if user.is_superuser %}
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Username <span class="d-none d-sm-block float-sm-right">:</span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-lg-9"><span>
+                                            {% if user.username %}
+                                            {{user.username}}
+                                            {% else %} - {% endif %}</span>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Email <span class="d-none d-sm-block float-sm-right">:</span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-lg-9"><span>
+                                            {% if user.email %}
+                                            {{user.email}}
+                                            {% else %} - {% endif %}</span>
+                                    </div>
+                                </div>
+                                {% if not user.is_superuser %}
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Mobile Number <span class="d-none d-sm-block float-sm-right">:</span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-lg-9"><span>
+                                            {% if user.mobile_no %}
+                                            {{user.mobile_no}}
+                                            {% else %} - {% endif %}</span>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Role <span class="d-none d-sm-block float-sm-right">:</span></h5>
+                                    </div>
+                                    {% if user.role_id == 1 %}
+                                    <div class="col-12 col-sm-8 col-lg-9"><span>Admin</span></div>
+                                    {% else %}
+                                    <div class="col-12 col-sm-8 col-lg-9"><span>User</span></div>
+                                    {% endif %}
+                                </div>
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Created On <span class="d-none d-sm-block float-sm-right">:</span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-lg-9">
+                                        <script>
+                                            var d = ConvertGTime("{{ user.created_on|date:'Y-m-d' }}","{{ user.created_on|time:'H:i' }}");
+                                            document.write(d);
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+{% include "admin-includes/footer.html" %}
