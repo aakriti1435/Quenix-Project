@@ -1,13 +1,18 @@
 {% include 'frontend/includes/header.html' %}
 {% load static %}
-{% load extras %}
-<!-- Style Css -->
-<link rel="stylesheet" href="{% static 'frontend-asset/css/pages-css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'frontend-asset/css/pages-css/step.css' %}" />
+<link rel="stylesheet" href="{% static 'frontend-asset/css/theme-style.css' %}" />
 <!--Home Banner Section-->
-
+<style>
+    .social-link li a{
+        border: 1px solid blue;
+    }
+    body{
+        background-color: #dff7ff !important;
+    }
+</style>
 <section class="banner-section">
     <div class="container">
     </div>
 </section>
-
 {% include 'frontend/includes/footer.html' %}

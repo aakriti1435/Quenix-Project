@@ -1,5 +1,5 @@
 body {
-  background-image: url(../../images/banner.jpg);
+  background-color: #dff7ff !important;
 }
 
 .page-body::before {

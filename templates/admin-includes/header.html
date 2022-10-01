@@ -75,7 +75,7 @@
         <div class="deznav">
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li  {% if not head_title %}class="mm-active"{% endif %}>
+                    <li  {% if not head_title or head_title == "Profile" or head_title == 'Change Password' %}class="mm-active"{% endif %}>
                         <a href="{% url 'frontend:index' %}" aria-expanded="false">
                             <i class="fas fa-tachometer-alt"></i>
                             <span class="nav-text">Dashboard</span>

@@ -4,7 +4,7 @@
 /* Common CSS */
 
 :root {
-    --primary-color: #f1ca3f;
+    --primary-color: #21d4fd;
 }
 
 body {
@@ -39,7 +39,7 @@ img {
 }
 
 a:hover {
-    color: #ff7116;
+    color: #21d4fd;
     text-decoration: none;
 }
 
@@ -85,7 +85,7 @@ input[type="checkbox"]+label::before {
     -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
     transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
     text-align: center;
-    color: #f8c506;
+    background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
 }
 
 input[type="checkbox"] {
@@ -98,8 +98,7 @@ input[type="checkbox"]:checked+label::before {
     font-family: "Font Awesome 5 Pro";
     font-size: 13px;
     line-height: 1.4;
-    background: #f8c506;
-    border-color: #f8c506;
+    background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
 }
 
 .text-primary {
@@ -111,8 +110,8 @@ input[type="checkbox"]:checked+label::before {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
+    border-color: #21d4fd;
     border-style: solid;
     border-width: 1px;
     color: #fff;
@@ -240,7 +239,6 @@ input[type="checkbox"]:checked+label::before {
 [class*="navbar-expand"] .navbar-nav .nav-item .nav-link {
     font-weight: 600;
     font-size: 18px;
-    color: #ffffff;
     padding: 0 5px;
 }
 
@@ -422,13 +420,7 @@ input[type="checkbox"]:checked+label::before {
 }
 
 .social-link li a:hover {
-    background-color: #ff7116;
-    color: #fff;
-}
-
-.social-link li a:hover i {
-
-    color: #fff;
+    background-color: #dff7ff;
 }
 
 [class*="navbar-expand"] .search-wrapper .form-control {
@@ -472,8 +464,12 @@ input[type="checkbox"]:checked+label::before {
 
 .footer-bottom {
     padding: 10px 0;
-    background: #f1ca3f;
+    background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
+    
     z-index: 1;
+}
+.footer-bottom a, .footer-bottom p{
+    color: #fff !important;
 }
 
 @media (min-width: 1200px) {
@@ -625,4 +621,9 @@ input[type="checkbox"]:checked+label::before {
         width: 270px;
     }
 
+}
+
+.navbar-brand{
+    font-size: 35px !important;
+    font-weight: 700 !important;
 }
