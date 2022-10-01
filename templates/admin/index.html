@@ -1,103 +1,142 @@
-{% include "admin-includes/header.html" %} {% block content %} {% load static %} {% load extras %}
+{% include "admin-includes/header.html" %} {% block content %} {% load static %}
+{% load extras %}
 <div class="content-body">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-3 col-xxl-4 col-sm-6">
-                <a href="{% url 'services:services_list' %}">
-                    <div class="card gradient-bx text-white bg-blue rounded">
-                        <div class="card-body">
-                            <div class="media align-items-center">
-                                <div class="media-body">
-                                    <p class="mb-1" style="font-weight:600;">Total Services</p>
-                                    <div class="d-flex flex-wrap">
-                                        <h2 class="fs-40 font-w600 text-white mb-0 mr-3">{{1|total_services}}</h2>
-                                        <div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="border rounded-circle p-4 icon-box">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xl-3 col-xxl-4 col-sm-6">
+				<a href="">
+					<div class="card gradient-bx text-white bg-blue rounded">
+						<div class="card-body">
+							<div class="media align-items-center">
+								<div class="media-body">
+									<p class="mb-1" style="font-weight: 600">
+										Total ----
+									</p>
+									<div class="d-flex flex-wrap">
+										<h2
+											class="fs-40 font-w600 text-white mb-0 mr-3"
+										>
+											0
+										</h2>
+										<div></div>
+									</div>
+								</div>
+								<span
+									class="border rounded-circle p-4 icon-box"
+								>
 									<i class="far fa-ballot-check"></i>
 								</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xl-3 col-xxl-4 col-sm-6">
-                <a href="{% url 'contact:contacts_list' %}">
-                    <div class="card gradient-bx text-white bg-red rounded">
-                        <div class="card-body">
-                            <div class="media align-items-center">
-                                <div class="media-body">
-                                    <p class="mb-1" style="font-weight:600;">Total Contacts</p>
-                                    <div class="d-flex flex-wrap">
-                                        <h2 class="fs-40 font-w600 text-white mb-0 mr-3">{{1|total_contacts}}</h2>
-                                    </div>
-                                </div>
-                                <span class="border rounded-circle p-4 icon-box">
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-xl-3 col-xxl-4 col-sm-6">
+				<a href="">
+					<div class="card gradient-bx text-white bg-red rounded">
+						<div class="card-body">
+							<div class="media align-items-center">
+								<div class="media-body">
+									<p class="mb-1" style="font-weight: 600">
+										Total ----
+									</p>
+									<div class="d-flex flex-wrap">
+										<h2
+											class="fs-40 font-w600 text-white mb-0 mr-3"
+										>
+											0
+										</h2>
+									</div>
+								</div>
+								<span
+									class="border rounded-circle p-4 icon-box"
+								>
 									<i class="fas fa-address-book"></i>
 								</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xl-3 col-xxl-4 col-sm-6">
-                <a href="{% url 'ratings:ratings_list' %}">
-                    <div class="card gradient-bx text-white bg-dark-bluee rounded">
-                        <div class="card-body">
-                            <div class="media align-items-center">
-                                <div class="media-body">
-                                    <p class="mb-1" style="font-weight:600;">Total Reviews</p>
-                                    <div class="d-flex flex-wrap">
-                                        <h2 class="fs-40 font-w600 text-white mb-0 mr-3">{{1|total_ratings}}</h2>
-                                    </div>
-                                </div>
-                                <span class="border rounded-circle p-4 icon-box">
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-xl-3 col-xxl-4 col-sm-6">
+				<a href="">
+					<div
+						class="card gradient-bx text-white bg-dark-bluee rounded"
+					>
+						<div class="card-body">
+							<div class="media align-items-center">
+								<div class="media-body">
+									<p class="mb-1" style="font-weight: 600">
+										Total ----
+									</p>
+									<div class="d-flex flex-wrap">
+										<h2
+											class="fs-40 font-w600 text-white mb-0 mr-3"
+										>
+											0
+										</h2>
+									</div>
+								</div>
+								<span
+									class="border rounded-circle p-4 icon-box"
+								>
 									<i class="fas fa-star-half-alt"></i>
 								</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xl-3 col-xxl-4 col-sm-6">
-                <a href="{% url 'page:page_list' %}">
-                    <div class="card gradient-bx text-white bg-secondary rounded">
-                        <div class="card-body">
-                            <div class="media align-items-center">
-                                <div class="media-body">
-                                    <p class="mb-1" style="font-weight:600;">Total Pages</p>
-                                    <div class="d-flex flex-wrap">
-                                        <h2 class="fs-40 font-w600 text-white mb-0 mr-3">{{1|total_pages}}</h2>
-                                    </div>
-                                </div>
-                                <span class="border rounded-circle p-4 icon-box">
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-xl-3 col-xxl-4 col-sm-6">
+				<a href="">
+					<div
+						class="card gradient-bx text-white bg-secondary rounded"
+					>
+						<div class="card-body">
+							<div class="media align-items-center">
+								<div class="media-body">
+									<p class="mb-1" style="font-weight: 600">
+										Total ----
+									</p>
+									<div class="d-flex flex-wrap">
+										<h2
+											class="fs-40 font-w600 text-white mb-0 mr-3"
+										>
+											0
+										</h2>
+									</div>
+								</div>
+								<span
+									class="border rounded-circle p-4 icon-box"
+								>
 									<i class="fas fa-paste"></i>
 								</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card card-table">
-                    <div id="chart-container-revenue" data-url="{% url 'contact:contacts_graph' %}"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card card-table">
+					<div
+						id="chart-container-revenue"
+						data-url=""
+					></div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 {% endblock %} {% include "admin-includes/footer.html" %}
-<script src="{% static 'admin-asset/js/highcharts.src.js' %}"></script>
+<script src="{% static 'admin-assets/js/highcharts.src.js' %}"></script>
 <script type="text/javascript">
-    $.ajax({
-        url: $("#chart-container-revenue").attr("data-url"),
-        dataType: 'json',
-        success: function(data) {
-            Highcharts.chart("chart-container-revenue", data);
-        }
-    });
+	$.ajax({
+		url: $("#chart-container-revenue").attr("data-url"),
+		dataType: "json",
+		success: function (data) {
+			Highcharts.chart("chart-container-revenue", data);
+		},
+	});
 </script>

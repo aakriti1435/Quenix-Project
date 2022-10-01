@@ -1,77 +1,75 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-    <meta charset="utf-8" />
+<html lang="en" dir="ltr">
+{% load static %}
+<head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Psychology</title>
+    <meta name="description" content="The central resource for information about travel softball teams in North America" />
+    <meta name="author" content="">
+    <title>Quenix</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="" />
-    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
-    <link
-        rel="stylesheet"
-        href="{% static 'frontend-asset/css/helpers-plugin.css' %}"
-    />
-    <link
-        rel="stylesheet"
-        href="{% static 'frontend-asset/fonts/fontawesome/css/all.min.css' %}"
-    />
-    <link
-        rel="stylesheet"
-        href="{% static 'frontend-asset/css/flash.css' %}"
-    />
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="{% static 'assets/css/templatemo-digital-trend.css' %}">
+    
+    <!-- Bootstrap Css -->
+    <link rel="stylesheet" href="{% static 'frontend-asset/css/bootstrap.min.css' %}">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="{% static 'frontend-asset/css/helpers-plugin.css' %}" />
+    <!-- Style Css -->
+    <link rel="stylesheet" href="{% static 'frontend-asset/css/theme-style.css' %}" />
+    <!-- fontawesome Css -->
+    <link rel="stylesheet" href="{% static 'frontend-asset/fonts/fontawesome/css/all.min.css' %}" />
+    <!-- style Css -->
+    <link rel="stylesheet" href="{% static 'frontend-asset/css/flash.css' %}" />
+    <!-- jquery JS -->
+    <!-- bootstrap JS -->
+    <script src="{% static 'frontend-asset/js/jquery.slim.min.js' %}"></script>
+    <script src="{% static 'frontend-asset/js/bootstrap.bundle.min.js' %}"></script>
 </head>
-<body>
-    <!-- MENU BAR -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'frontend:index' %}">
-              PSYCHOLOGY
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="{% url 'frontend:abouts' %}" class="nav-link smoothScroll">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'contact:contact_form' %}" class="nav-link smoothScroll">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'ratings:rate_us' %}" class="nav-link smoothScroll">Rate Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'accounts:login' %}" class="nav-link smoothScroll">Login</a>
-                    </li>
-                </ul>
+
+<body class="page-body home-page">
+    <header class="automotive-header-transparent">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'frontend:index' %}">
+                    QUENIX
+                </a>
+                <button id="nav-icon2" class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-lg-auto align-items-center mr-lg-20 order-2 order-lg-1">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">About Us</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
+    <!-- Start Page Wrapper -->
     <main class="page-wrapper">
-        {% if messages %}
+    {% if messages %}
         <div class="flash animate--drop-in-fade-out">
-            {% for message in messages %}
+        {% for message in messages %}
             <div class="flash__icon">
                 <i class="icon far fa-check-circle"></i>
             </div>
-
-            <p class="flash__body">{{ message }}</p>
+            
+            <p class="flash__body">
+                {{ message }}
+            </p>
             {% endfor %}
         </div>
-        {% endif %}
-    </main>
+    {% endif %}

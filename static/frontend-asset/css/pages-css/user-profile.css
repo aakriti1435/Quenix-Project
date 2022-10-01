@@ -1,0 +1,641 @@
+.settings-page-outer .setting-page-wrap .settings-main-wrap .address-list .address-main h4 {
+    font-size: 16px;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .address-list .address-main p {
+    margin: 0;
+    color: #7d7d7d;
+    line-height: 1.3;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .address-list .address-main {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 10%);
+    padding: 15px 30px 15px 15px;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .address-list {
+    margin: 30px 0 0 0;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .address-list .address-main .address-edit {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    color: var(--primary-color);
+}
+
+.settings-page-outer .setting-page-wrap .sidebar-wrap .profile_picture .ga-profileimg {
+    width: 125px;
+    height: 125px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.settings-page-outer .setting-page-wrap .sidebar-wrap .profile_picture {
+    margin: 0;
+    text-align: center;
+    padding: 23px 20px 18px;
+    border-bottom: 2px solid #f6f6f6;
+}
+
+.settings-page-outer .setting-page-wrap .sidebar-wrap .profile_picture .ga-profileimg img {
+    border-radius: 50%;
+    border: 1px solid #eee;
+    padding: 5px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.settings-page-outer .setting-page-wrap .sidebar-wrap .profile_picture h4 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.settings-page-outer .setting-page-wrap .sidebar-wrap .profile_picture p {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.settings-page-outer .setting-page-wrap .sidebar-wrap {
+    width: 300px;
+}
+
+.settings-page-outer {
+    padding: 50px 0;
+    min-height: calc(100vh - 231px);
+}
+
+.settings-page-outer .setting-page-wrap {
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .05);
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap {
+    border-left: 2px solid #f6f6f6;
+    min-height: 750px;
+    width: calc(100% - 300px);
+}
+
+.settings-page-outer .setting-page-wrap .title {
+    margin: 0;
+    text-align: center;
+    padding: 23px 20px 18px;
+    border-bottom: 2px solid #f6f6f6;
+    position: relative;
+}
+
+.settings-page-outer .setting-page-wrap .sidebar-wrap ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.settings-page-outer .setting-page-wrap .title h3 {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper {
+    padding: 25px;
+    background-color: #fff;
+}
+
+.settings-page-outer .setting-page-wrap .sidebar-wrap ul li a {
+    padding: 16px 30px 15px 30px;
+    display: inline-block;
+    width: 100%;
+    font-weight: 600;
+    transition: .3s;
+    color: #000;
+    text-decoration: none !important;
+    font-size: 17px;
+}
+
+.settings-page-outer .setting-page-wrap .sidebar-wrap ul li a.active,
+.settings-page-outer .setting-page-wrap .sidebar-wrap ul li a:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.settings-page-outer .setting-page-wrap .sidebar-wrap ul li a i {
+    width: 25px;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper .profile-image-wrap {
+    margin-bottom: 20px;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper .profile-image-wrap .icon-wrap {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper .profile-image-wrap .icon-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper .profile-image-wrap .icon-wrap input {
+    display: none;
+}
+
+.rating-list .rating-wrap .media-body .name {
+    color: #999;
+    display: inline-block;
+    width: 100%;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper .star-wrap button {
+    min-width: 90px;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper .star-wrap button {
+    margin: 0;
+    padding: 7px 10px;
+    font-size: 15px;
+}
+
+.sidebar-top.sidebar .tab-wrap .check-wrap label img {
+    display: block;
+    width: 30px;
+    margin: auto;
+}
+
+.sidebar-top.sidebar .tab-wrap .check-wrap label::before {
+    display: none;
+}
+
+.sidebar-top.sidebar .tab-wrap .check-wrap input:checked+label {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.sidebar-top.sidebar .tab-wrap .check-wrap input:checked+label img {
+    filter: brightness(0) invert(1);
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper.products li.nav-item {
+    width: auto;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper.products .nav-tabs {
+    margin: 0 0 20px 0;
+}
+
+.profile-inf .profile-top-wrap .top-profile-wrap .icon-wrap input {
+    display: none;
+}
+
+.profile-inf .profile-top-wrap .top-profile-wrap .icon-wrap label,
+.settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper .profile-image-wrap .icon-wrap label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    margin: auto;
+    display: block;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 10px 14px 7px 14px;
+    opacity: 0;
+    width: 120px;
+    font-weight: 600;
+    transition: .3s;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.profile-inf .profile-top-wrap .top-profile-wrap .icon-wrap:hover label,
+.settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper .profile-image-wrap .icon-wrap:hover label {
+    opacity: 1;
+}
+
+.settings-page-outer .setting-page-wrap .title .switch-toggle {
+    background: var(--primary-color);
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    line-height: 40px;
+}
+
+.settings-table .table {
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    border: none;
+}
+
+.settings-table .table thead th,
+.settings-table .table td {
+    background: #FAFBFF;
+    border: 0px;
+    vertical-align: middle;
+    transition: .3s;
+    padding: 10px 15px;
+    white-space: nowrap;
+}
+
+.settings-table .table thead th {
+    font-weight: 600;
+    color: #333;
+    padding: 20px 15px;
+}
+
+.settings-table .table td {
+    color: #333;
+}
+
+.tab-wrap.settings-table {
+    padding-top: 20px;
+}
+
+.settings-table .table td .btn {
+    font-size: 15px;
+    padding: 10px 15px 6px 15px;
+}
+
+.settings-page-outer .form-wrap .form-group label,
+.settings-page-outer .form-wrap .form-group h3.label {
+    align-self: center;
+    color: #333333;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.4;
+    margin-bottom: 5px;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .multiple-cards .media-list {
+    margin: 0 0 30px 0;
+}
+
+.settings-main-wrap .multiple-cards .media-list .media {
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+
+.settings-main-wrap .multiple-cards .media-list .media:not(:last-of-type) {
+    margin: 0 0 15px 0;
+    padding: 0 0 15px 0;
+    border-bottom: 1px solid #f6f6f6;
+}
+
+.settings-main-wrap .multiple-cards .media-list .media .icon-wrap {
+    font-size: 25px;
+  
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: 0.5s;
+    width: 60px;
+    text-align: center;
+    color: #fff;
+    height: 60px;border:1px solid #e7e7e7;
+    -ms-flex-pack: center;
+    justify-content: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.settings-main-wrap .multiple-cards .media-list .media .media-body {
+    padding: 0 15px 0 15px !important;
+}
+
+.settings-main-wrap .multiple-cards .media-list .media .media-body h5 {
+    margin: 0;
+    font-size: var(--body-font-size);
+    font-weight: 700;
+}
+
+.settings-main-wrap .multiple-cards .media-list .media .media-body p {
+    margin: 0;
+    color: #7d7d7d;
+}
+
+.settings-main-wrap .multiple-cards .media-list .media .action-wrap a.edit-btn {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.settings-main-wrap .profile-wrapper .nav-tabs .nav-link.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.settings-main-wrap .profile-wrapper .nav-tabs .nav-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #333333;
+    padding: 10px 20px 6px 20px;
+}
+
+.settings-page-outer .booking-wrapper .profile-media {
+    margin: 0 0 20px 0;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.settings-page-outer .booking-wrapper .profile-media .icon-wrap img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border: 3px solid #fff;
+    border-radius: 3px;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.settings-page-outer .booking-wrapper .profile-media .media-body {
+    padding: 0 0 0 20px;
+}
+
+.settings-page-outer .booking-wrapper .profile-media .media-body h4 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.settings-page-outer .booking-wrapper .profile-media .media-body p {
+    color: var(--main-color);
+    display: block;
+    font-size: var(--body-font-size);
+    font-weight: 500;
+    margin: 0;
+}
+
+.settings-page-outer .booking-wrapper ul.booking-details {
+    margin: 0 0 20px 0;
+    padding: 20px;
+    background: #fafafa;
+}
+
+.settings-page-outer .booking-wrapper ul.booking-details li {
+    position: relative;
+    text-align: left;
+    display: block;
+    font-weight: 500;
+    font-size: 17px;
+    padding-left: 37px;
+    margin-bottom: 15px;
+}
+
+.settings-page-outer .booking-wrapper ul.booking-details li:hover {
+    color: var(--color-body);
+}
+
+.settings-page-outer .booking-wrapper ul.booking-details li i {
+    font-size: 25px;
+    color: #cfcfcf;
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+.settings-page-outer .booking-wrapper ul.booking-details li span {
+    display: block;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    margin-bottom: 1px;
+    font-weight: 600;
+}
+
+.settings-page-outer .booking-wrapper ul.booking-details li a {
+    word-break: break-all;
+}
+
+.settings-page-outer .page-form h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper .form-control {
+    background-color: #fff;
+    border: none;
+    -webkit-transition: .5s;
+    transition: .5s;
+    -webkit-box-shadow: 0 2px 8px 1.5px rgba(149, 152, 200, .2) !important;
+    box-shadow: 0 2px 8px 1.5px rgba(149, 152, 200, .2) !important;
+    border: none;
+    border-radius: 0;
+    padding: 13px 22px 16px 20px;
+    height: auto;
+    font-size: 17px;
+    color: #333333;
+    font-weight: 500;
+}
+
+.settings-page-outer .form-wrap .form-group {
+    margin: 0 0 25px 0;
+}
+
+.settings-page-outer .settings-text p {
+    font-size: var(--body-font-size);
+    color: #666;
+    margin: 0;
+}
+
+.settings-page-outer .settings-text p a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.settings-main-wrap .order-status-box {
+    background-color: #f8f8f8;
+    margin-bottom: 20px;
+    padding: 35px;
+}
+
+.settings-table .table.v-align-top td,
+.settings-table .table.v-align-top th {
+    vertical-align: top;
+}
+
+.notifications-row .media {
+    padding: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 12%);
+    border-radius: 10px;
+}
+
+.notifications-row .media:not(:last-of-type) {
+    margin: 0 0 15px 0;
+}
+
+.notifications-row .media .media-date {
+    width: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 26px;
+    border-radius: 10px;
+    background: var(--primary-color);
+    color: var(--white);
+    height: 70px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.notifications-row .media .media-body {
+    padding: 0 0 0 15px !important;
+}
+
+.notifications-row .media h3 {
+    font-weight: 600;
+    margin: 0 0 4px;
+    font-size: 20px;
+}
+
+.notifications-row .media p {
+    margin: 0;
+    color: #7d7d7d;
+}
+
+.notifications-row .media p i {
+    margin: 0 5px 0 0;
+    color: var(--primary-blue);
+}
+
+.notifications-row .media h3 a {
+    text-decoration: none;
+}
+
+.notifications-row .media h3 a:hover {
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+
+.notifications-row .media h3 a {
+    transition: .3s;
+    color: var(--main-color);
+}
+
+.setting-page-wrap .profile-wrapper img {
+    border-radius: 10px;
+}
+
+.team-name {
+    color: #000;
+}
+
+.logo-upload {
+    display: none;
+}
+
+.logo-label {
+    opacity: 1;
+    background-color: #fff;
+    border: none;
+    -webkit-transition: .5s;
+    transition: .5s;
+    -webkit-box-shadow: 0 2px 8px 1.5px rgba(149, 152, 200, .2) !important;
+    box-shadow: 0 2px 8px 1.5px rgba(149, 152, 200, .2) !important;
+    border: none;
+    border-radius: 0;
+    padding: 13px 22px 16px 20px;
+    appearance: none;
+    -webkit-appearance: none;
+    height: auto;
+    font-size: 19px;
+    color: #333333;
+    font-weight: 500;
+    width: 100%;
+    cursor: pointer;
+}
+
+.payment-card {
+    box-shadow: 0px 4px 18px 0px rgba(194, 200, 213, 0.3);
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.payment-card h4 {
+    font-size: 22px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.payment-card h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 49px;
+    margin-bottom: 0;
+}
+
+.year-span {
+    font-size: 22px;
+}
+
+.team-name:hover {
+    text-decoration: none;
+}
+
+.season-select-new {
+    position: relative;
+}
+
+.caret {
+    color: red;
+}
+
+@media (max-width: 991.98px) {
+
+    /***Settings Page****/
+    .settings-page-outer .setting-page-wrap {
+        display: block;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .settings-page-outer .setting-page-wrap .sidebar-wrap {
+        position: absolute;
+        z-index: 1;
+        background: #fff;
+        height: 100%;
+        top: 100%;
+        transition: .3s;
+        opacity: 0;
+        width: 100%;
+        margin: 0 0 0px 0;
+    }
+
+    .settings-page-outer .setting-page-wrap .sidebar-wrap.open-sidebar {
+        top: 0;
+        opacity: 1;
+    }
+
+    .settings-page-outer .setting-page-wrap .settings-main-wrap .profile-wrapper .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .settings-page-outer .setting-page-wrap .settings-main-wrap {
+        max-width: 100%;
+        width: 100%;
+    }
+}

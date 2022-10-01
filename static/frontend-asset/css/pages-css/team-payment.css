@@ -1,0 +1,67 @@
+.year-span {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.year-span {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.payment-card.border-card {
+    margin: 0;
+    border: 1px solid #fff;
+    height: 100%;
+}
+
+.payment-card.border-card.default_card, .active_card {
+    border: #ffc107 1px solid;
+}
+
+.payment-card.scroll-card {
+    max-height: 345px;
+    overflow-y: auto;
+}
+
+.active_card {
+    border: #ffc107 1px solid;
+}
+
+.payment-card .card-group .card {
+
+    padding: 14px;
+    cursor: pointer;
+    margin-bottom: 14px;
+
+}
+
+.card-name {
+
+    font-size: 17px;
+    font-weight: 600;
+
+}
+
+.payment-card img {
+    width: 45px;
+}
+
+.modal-backdrop.fade.show {
+    display: none;
+}
+
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.card-header-yellow {
+    background-color: #f1ca3f;
+    color: #fff;
+}
+
+.btn-theme-updated {
+    background-color: #ff7116;
+    border: 1px solid #ff7116;
+}
