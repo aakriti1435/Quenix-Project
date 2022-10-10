@@ -1,6 +1,5 @@
 import re
 import environ
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout
 from django.utils.decorators import method_decorator
@@ -15,6 +14,7 @@ from .models import *
 from django.db.models import Q
 from django.db.models import Count
 from .backend import authenticate
+from .utils import *
 env = environ.Env()
 environ.Env.read_env()
 
@@ -105,15 +105,7 @@ class PasswordChange(View):
 
 @login_required
 def LoginHistoryView(request):
-    loginhistory = LoginHistory.objects.all().order_by('-id')
-    page = request.GET.get('page', 1)
-    paginator = Paginator(loginhistory, PAGE_SIZE)
-    try:
-        loginhistory = paginator.page(page)
-    except PageNotAnInteger:
-        loginhistory = paginator.page(1)
-    except EmptyPage:
-        loginhistory = paginator.page(paginator.num_pages)
+    loginhistory = get_pagination(request, LoginHistory.objects.all().order_by('-id'))
     return render(request, 'admin/login-history.html', {"loginhistory":loginhistory, "head_title":"Login History"})
 
 
@@ -126,3 +118,9 @@ def DeleteHistory(request):
     else:
         messages.error(request,"Nothing to Delete!!!")
     return redirect('accounts:login_history')
+
+
+@login_required
+def CitiesList(request):
+    cities = get_pagination(request, Cities.objects.all().order_by('-id'))
+    return render(request, "admin/cities.html", {"head_title":"Cities Management", "cities":cities})

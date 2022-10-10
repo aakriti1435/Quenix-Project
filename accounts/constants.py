@@ -3,9 +3,20 @@ PAGE_SIZE = 30
 """
 user role type name
 """
-USER_ROLE = ((1, "Admin"),(2,"User"))
+USER_ROLE = ((1, "Admin"),(2,"Customer"),(3,"ServiceProvider"))
 ADMIN = 1
-USER = 2
+CUSTOMER = 2
+SERVICE_PROVIDER = 3
+
+
+"""
+Service Provider Roles
+"""
+SERVICE_USER_ROLE = ((1, "Hospital"), (2, "Clinic"), (3, "Saloon"), (4, "Banks"))
+HOSPITAL_USER = 1
+CLINIC_USER = 2
+SALOON_USER = 3
+BANK_USER = 4
 
 
 """
@@ -15,6 +26,15 @@ USER_STATUS = ((1, "Active"),(2,"Inactive"),(3,"Deleted"))
 ACTIVE = 1
 INACTIVE = 2
 DELETED = 3
+
+
+"""
+USER GENDER
+"""
+GENDER = ((1, "Male"), (2, "Female"), (3, "Other"))
+MALE = 1
+FEMALE = 2
+OTHER = 3
 
 
 """

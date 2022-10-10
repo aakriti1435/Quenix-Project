@@ -17,4 +17,8 @@ urlpatterns = [
     ## Login History
     url(r'^login-history/$', LoginHistoryView, name='login_history'),
     url(r'^delete-history/$', DeleteHistory, name='delete_history'),
+
+    ## Cities
+    url(r'^cities-list/$', CitiesList, name='cities_list'),
+
 ]
