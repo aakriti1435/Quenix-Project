@@ -1,7 +1,8 @@
 from django.core.management.base import BaseCommand
 from accounts.models import *
 
-CITIES_LIST = ["Delhi", "Mumbai", "Kolkata", "Banglore", "Chennai", "Hyderabad", "Ahemdabad", "Surat", "Pune", "Jaipur", "Lucknow", "Kozhikode", "Malappuram", "Gurugram", "Noida", "Ghaziabad", "Faridabad", "Thrisspur", "Kochi", "Kanpur", "Indore", "Nagpur", "Coimbatore"]
+CITIES_LIST = ["Delhi","Mumbai","Kolkata","Bangalore","Chennai","Hyderabad","Ahmadabad","Surat","Pune","Jaipur","Lucknow","Kozhikode","Malappuram","Gurugram","Noida","Ghaziabad","Faridabad","Thrissur","Kochi","Kanpur","Indore","Nagpur","Coimbatore","Thiruvananthapuram","Patna","Bhopal","Agra","Vadodara","Kannur","Visakhapatnam","Nashik","Vijayawada","Kollam","Rajkot","Ludhiana","Madurai","Meerut","Raipur","Varanasi","Jamshedpur","Srinagar","Aurangabad","Jodhpur","Mohali","Panchkula"]
+
 
 class Command(BaseCommand):
     help = "Adding default cities...."
