@@ -7,7 +7,7 @@ User = get_user_model()
 
 def authenticate(username=None, password=None):
     try:
-        user = User.objects.get(Q(username=username)|Q(email=username),Q(state=ACTIVE)|Q(state=INACTIVE))
+        user = User.objects.get(Q(username=username)|Q(email=username),Q(status=ACTIVE)|Q(status=INACTIVE))
     except User.DoesNotExist:
         return None
     if user.check_password(password):

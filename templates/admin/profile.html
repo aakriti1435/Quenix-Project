@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <div class="text-right float-md-right">
                             <div class="addlocation mb-3">
-                                {% if not user.state == 3%}
+                                {% if not user.status == 3%}
                                 <a class="mr-2" href="{% url 'accounts:edit_user' user.id %}">Edit Profile</a>
                                 {% endif %}
                             </div>

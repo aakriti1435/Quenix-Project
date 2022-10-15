@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^verify-otp/$', VerifyOTP.as_view(), name='verify_otp'),
     url(r'^check-user/$', CheckUser.as_view(), name='check_user'),
     url(r'^logout/$', LogOutView.as_view(), name='logout_view'),
+    url(r'^update-profile/$', UpdateProfile.as_view(), name='update_profile'),
 ]

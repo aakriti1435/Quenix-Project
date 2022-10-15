@@ -37,8 +37,14 @@ class GenerateOTP(APIView):
                 "status":status.HTTP_400_BAD_REQUEST
             },status=status.HTTP_400_BAD_REQUEST)
             
-        if User.objects.filter(Q(state=ACTIVE)|Q(state=INACTIVE),mobile_no=request.data.get('mobile_no'), role_id=request.data.get('role_id')):
-            user = User.objects.filter(Q(state=ACTIVE)|Q(state=INACTIVE),mobile_no=request.data.get('mobile_no'), role_id=request.data.get('role_id')).last()
+        if User.objects.filter(Q(status=ACTIVE)|Q(status=INACTIVE),mobile_no=request.data.get('mobile_no'), role_id=request.data.get('role_id')):
+            user = User.objects.filter(Q(status=ACTIVE)|Q(status=INACTIVE),mobile_no=request.data.get('mobile_no'), role_id=request.data.get('role_id')).last()
+            
+            if user.status == INACTIVE:
+                return Response({
+                    "message":"Your Account Is Inactive. Please Contact Admin",
+                    "status":status.HTTP_400_BAD_REQUEST
+                },status=status.HTTP_400_BAD_REQUEST)
             user.temp_otp = str(random.randrange(100000, 999999))
             user.save()
         else:
@@ -123,7 +129,7 @@ class LogOutView(APIView):
         }, status=status.HTTP_200_OK)
             
             
-class ProfileSetup(APIView):
+class UpdateProfile(APIView):
     permission_classes = (permissions.IsAuthenticated, )
     
     def post(self, request, *args, **kwargs):
@@ -139,10 +145,7 @@ class ProfileSetup(APIView):
             return Response({"message":"Please enter your date of birth","status":status.HTTP_400_BAD_REQUEST},status=status.HTTP_400_BAD_REQUEST)
         if not request.data.get('gender'):
             return Response({"message":"Please select your gender","status":status.HTTP_400_BAD_REQUEST},status=status.HTTP_400_BAD_REQUEST)
-        if not request.data.get('password'):
-            return Response({"message":"Please enter password","status":status.HTTP_400_BAD_REQUEST},status=status.HTTP_400_BAD_REQUEST)
-        
-        if User.objects.filter(email = request.data.get('email'), status=ACTIVE, role_id=user.role_id):
+        if User.objects.filter(email = request.data.get('email'), status=ACTIVE, role_id=user.role_id).exclude(id=user.id):
             return Response({"message":"There is already registered user with this email address.","status":status.HTTP_400_BAD_REQUEST},status=status.HTTP_400_BAD_REQUEST)
         
         user.email = request.data.get('email')
@@ -151,14 +154,16 @@ class ProfileSetup(APIView):
         user.full_name = request.data.get('first_name') + " " + request.data.get('last_name')
         user.dob = request.data.get('dob')
         user.gender = request.data.get('gender')
-        user.password = make_password(request.data.get('password')) 
+        if request.data.get('password'):
+            user.password = make_password(request.data.get('password')) 
         user.is_profile_setup = True
+        if request.FILES.get('profile_pic'):
+            user.profile_pic = request.FILES.get('profile_pic')
         user.save()
         
         return Response({
             "message":"Profile Updated Successfully!",
             "data":UserSerializer(user, context={"request":request}).data,
             "status":status.HTTP_200_OK,
-        }, status=status.HTTP_200_OK)
-            
+        }, status=status.HTTP_200_OK)            
             
