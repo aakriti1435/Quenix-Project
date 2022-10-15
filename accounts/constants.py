@@ -54,3 +54,10 @@ LOGIN_SUCCESS = 1
 LOGIN_FAILURE = 2
 
 
+"""
+Device Types
+"""
+DEVICE_TYPE = ((1, 'Aandroid'), (2, 'IOS'))
+ANDROID = 1
+IOS = 2
+

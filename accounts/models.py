@@ -21,6 +21,10 @@ class User(AbstractUser):
     created_on = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     service_role = models.PositiveIntegerField(choices=SERVICE_USER_ROLE, null=True, blank=True)
     temp_otp = models.CharField(null=True, blank=True, max_length=10)
+    lattitude = models.CharField(null=True, blank=True, max_length=255)
+    longitude = models.CharField(null=True, blank=True, max_length=255)
+    city = models.ForeignKey('Cities', null=True, blank=True, on_delete=models.SET_NULL)
+    is_profile_setup = models.BooleanField(default=False, null=True, blank=True)
 
 
     class Meta:
@@ -58,3 +62,19 @@ class Cities(models.Model):
         managed = True
         db_table = 'tbl_cities'
 
+
+"""
+Device 
+"""
+class Device(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    device_type = models.PositiveIntegerField(choices=DEVICE_TYPE,null=True,blank=True)
+    device_name = models.CharField(max_length=50,null=True,blank=True)
+    device_token = models.CharField(max_length=500,null=True,blank=True)
+    
+    class Meta:
+        managed = True
+        db_table = 'tbl_device'
+
+    def __str__(self):
+        return str(self.device_name)
