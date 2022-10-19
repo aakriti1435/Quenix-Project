@@ -15,7 +15,7 @@
 			href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
 			rel="stylesheet"
 		/>
-		<title>Pherious Product</title>
+		<title>Quenix</title>
 		<!-- Bootstrap core CSS -->
 		<link
 			href="{% static 'frontend-assets/vendor/bootstrap/css/bootstrap.min.css' %}"
@@ -65,6 +65,10 @@
 				<div class="main">
 					<form id="login" class="form" action="{% url 'accounts:login' %}" method="POST">
                         {% csrf_token %}
+						<a href="{% url 'frontend:index' %}" >
+							<img src="{% static 'frontend-assets/assets/images/logo.png' %}" style="width:150px !important;" alt="Chain App Dev">
+						</a>
+						
 						<h2 class="form_title title">Log In To Website</h2>
 						<span class="form__span">Use your email account</span>
 

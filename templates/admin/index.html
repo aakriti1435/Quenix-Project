@@ -10,13 +10,13 @@
 							<div class="media align-items-center">
 								<div class="media-body">
 									<p class="mb-1" style="font-weight: 600">
-										Total ----
+										Total Customers
 									</p>
 									<div class="d-flex flex-wrap">
 										<h2
 											class="fs-40 font-w600 text-white mb-0 mr-3"
 										>
-											0
+											{{1|total_customers}}
 										</h2>
 										<div></div>
 									</div>
@@ -24,7 +24,7 @@
 								<span
 									class="border rounded-circle p-4 icon-box"
 								>
-									<i class="far fa-ballot-check"></i>
+									<i class="fas fa-user"></i>
 								</span>
 							</div>
 						</div>
@@ -38,20 +38,20 @@
 							<div class="media align-items-center">
 								<div class="media-body">
 									<p class="mb-1" style="font-weight: 600">
-										Total ----
+										Total Service Providers
 									</p>
 									<div class="d-flex flex-wrap">
 										<h2
 											class="fs-40 font-w600 text-white mb-0 mr-3"
 										>
-											0
+											{{9|total_service_providers}}
 										</h2>
 									</div>
 								</div>
 								<span
 									class="border rounded-circle p-4 icon-box"
 								>
-									<i class="fas fa-address-book"></i>
+									<i class="fas fa-user"></i>
 								</span>
 							</div>
 						</div>
@@ -59,7 +59,7 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-xxl-4 col-sm-6">
-				<a href="">
+				<a href="{% url 'accounts:cities_list' %}">
 					<div
 						class="card gradient-bx text-white bg-dark-bluee rounded"
 					>
@@ -67,27 +67,27 @@
 							<div class="media align-items-center">
 								<div class="media-body">
 									<p class="mb-1" style="font-weight: 600">
-										Total ----
+										Total Cities
 									</p>
 									<div class="d-flex flex-wrap">
 										<h2
 											class="fs-40 font-w600 text-white mb-0 mr-3"
 										>
-											0
+											{{0|total_cities}}
 										</h2>
 									</div>
 								</div>
 								<span
 									class="border rounded-circle p-4 icon-box"
 								>
-									<i class="fas fa-star-half-alt"></i>
+									<i class="fas fa-city"></i>
 								</span>
 							</div>
 						</div>
 					</div>
 				</a>
 			</div>
-			<div class="col-xl-3 col-xxl-4 col-sm-6">
+			{% comment %}<div class="col-xl-3 col-xxl-4 col-sm-6">
 				<a href="">
 					<div
 						class="card gradient-bx text-white bg-secondary rounded"
@@ -115,12 +115,12 @@
 						</div>
 					</div>
 				</a>
-			</div>
+			</div> {% endcomment %}
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="card card-table">
-					<div id="chart-container-revenue" data-url=""></div>
+					<div id="chart-container-revenue" data-url="{% url 'accounts:user_graph' %}"></div>
 				</div>
 			</div>
 		</div>

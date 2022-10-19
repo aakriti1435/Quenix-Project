@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^edit-user/(?P<id>[-\w]+)/$', EditUser, name='edit_user'),
     url(r'^view/(?P<id>[-\w]+)/$',ViewUser, name='view_user'),
     url(r'^change-password/$', PasswordChange.as_view(), name='Password_Change'),
+    url(r'^user-graph/$', UserGraph, name='user_graph'),
 
     ## Login History
     url(r'^login-history/$', LoginHistoryView, name='login_history'),

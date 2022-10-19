@@ -124,3 +124,29 @@ def DeleteHistory(request):
 def CitiesList(request):
     cities = get_pagination(request, Cities.objects.all().order_by('-id'))
     return render(request, "admin/cities.html", {"head_title":"Cities Management", "cities":cities})
+
+
+@login_required
+def UserGraph(request):
+    if request.is_ajax:
+        customers, service_providers = [],[]
+        months = {'jan':'1','feb':'2','mar':'3','apr':'4','may':'5','jun':'6','jul':'7','aug':'8','sep':'9','oct':'10','nov':'11','dec':'12'}
+        for i in months.keys():
+            customers.append(User.objects.filter(role_id = CUSTOMER,created_on__year=str(datetime.now().year),created_on__month= months[i]).count())
+            service_providers.append(User.objects.filter(role_id = SERVICE_PROVIDER,created_on__year=str(datetime.now().year),created_on__month= months[i]).count())
+
+        chart = {
+            'chart': {'type': 'column'},
+            'title': {'text': f'User Records in {datetime.now().year}'},
+            'xAxis': { 'categories': [i.upper() for i in months.keys()]},
+            'colors': ['#3b7ff2', '#fe7096'],
+            'series': [{
+                    'name': 'Customers',
+                    'data':customers
+                },
+                {
+                    'name': 'Service Providers',
+                    'data':service_providers
+                }]
+            }
+        return JsonResponse(chart)
