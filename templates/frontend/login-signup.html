@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Pherious Product</title>
+		<!-- Bootstrap core CSS -->
+		<link
+			href="{% static 'frontend-assets/vendor/bootstrap/css/bootstrap.min.css' %}"
+			rel="stylesheet"
+		/>
+		<!-- Additional CSS Files -->
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+			integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="{% static 'frontend-assets/assets/css/templatemo-chain-app-dev.css' %}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{% static 'frontend-assets/assets/css/animated.css' %}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{% static 'frontend-assets/assets/css/owl.css' %}"
+		/>
+	</head>
+	<body>
+		<!-- partial:index.partial.html -->
+		<!DOCTYPE html>
+		<html lang="es" dir="ltr">
+			<head>
+				<meta
+					name="viewport"
+					content="width=device-width, user-scalable=no, initial-scale=1.0"
+				/>
+				<meta charset="utf-8" />
+				<link
+					rel="stylesheet"
+					type="text/css"
+					href="{% static 'frontend-assets/style.css' %}"
+				/>
+				<link
+					href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap"
+					rel="stylesheet"
+				/>
+			</head>
+			<body>
+				<div class="main">
+					<form id="login" class="form" action="{% url 'accounts:login' %}" method="POST">
+                        {% csrf_token %}
+						<h2 class="form_title title">Log In To Website</h2>
+						<span class="form__span">Use your email account</span>
+
+						<input
+							class="form__input"
+							type="text"
+							placeholder="Email"
+                            name="email" maxlength="50"
+						/>
+
+                        <div class="form-group password">
+                            <input
+							class="form__input"
+							type="password"
+                            name="password" id="password"
+							placeholder="Password"
+						/>
+                        <span id="password1" type="checkbox" data-attr="password" class="eyeicon">
+                            <i class="eye fas fa-eye-slash"></i>
+                        </span>
+                        </div>
+						
+                        <a class="form__link">Forgot your password?</a>
+
+						<button
+							type="submit"
+							class="form__button button submit"
+						>
+							Log In
+						</button>
+					</form>
+				</div>
+			</body>
+		</html>
+	</body>
+</html>
+<script src="{% static 'admin-assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'admin-assets/js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'admin-assets/js/additional-methods.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).on('click', '.eyeicon', function () {
+        var x = document.getElementById($(this).attr("data-attr"));
+        if (x.getAttribute('type') == "password") {
+            $(this).find(".eye").removeClass("fas fa-eye-slash");
+            $(this).find(".eye").addClass("fas fa-eye");
+            x.removeAttribute("type");
+            x.setAttribute("type", "text");
+        } else {
+            x.removeAttribute("type");
+            x.setAttribute('type', 'password');
+            $(this).find(".eye").removeClass("fas fa-eye");
+            $(this).find(".eye").addClass("fas fa-eye-slash");
+        }
+    })
+</script>
+<script type="text/javascript">
+    $("#login").validate({
+        rules: {
+            email: {
+                required: true,
+                normalizer: function( value ) {
+                    return $.trim( value );
+                },
+                email: true
+            },
+            password: {
+                required: true,
+                minlength: 8,
+            },
+        },
+        messages: {
+            email: {
+                required: "Please enter email",
+            },
+            password: {
+                required: "Please enter password",
+                minlength: jQuery.validator.format("At least {0} characters required!")
+            },
+        },
+        errorPlacement:function( error, element ){
+            if(element.is( "#password" )){
+                error.insertAfter('.password');
+            }
+            else {
+                error.insertAfter(element);
+            }
+        }
+    });
+</script>

@@ -32,7 +32,7 @@ class LogOutView(View):
 
 class LoginView(View):
     def get(self,request,*args,**kwargs):
-        return render(request,'frontend/login.html' , {'activated' : 'login', "title":"Login"})
+        return render(request,'frontend/login-signup.html' , {'activated' : 'login', "title":"Login"})
     
     def post(self,request,*args,**kwargs):
         email = request.POST.get("email")
@@ -51,7 +51,7 @@ class LoginView(View):
             history.status = LOGIN_FAILURE
             history.save()
             messages.error(request, 'Invalid login credentials')
-            return render(request, 'frontend/login.html',{"email":email})
+            return render(request, 'frontend/login-signup.html',{"email":email})
         
         if user.is_superuser and user.role_id == ADMIN:
             login(request, user)
@@ -61,7 +61,7 @@ class LoginView(View):
             history.status = LOGIN_FAILURE
             history.save()
             messages.error(request, 'Invalid login credentials')
-            return render(request, 'frontend/login.html',{"email":email})
+            return render(request, 'frontend/login-signup.html',{"email":email})
 
 
 @login_required

@@ -18,11 +18,25 @@ body {
   color: #a0a5a8;
 }
 
+.error{
+  color: red !important;
+}
+
+.eye {
+  position: absolute;
+    top: 15px;
+    right: 12px;
+    font-size: 16px;
+}
+.password{
+  position:relative;
+}
+
 /**/
 .main {
   position: relative;
-  width: 1000px;
-  min-width: 1000px;
+  width: 600px;
+  min-width: 600px;
   min-height: 600px;
   height: 600px;
   padding: 25px;

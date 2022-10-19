@@ -1,75 +1,73 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
 {% load static %}
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="The central resource for information about travel softball teams in North America" />
-    <meta name="author" content="">
-    <title>Quenix</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="" />
-    
-    <!-- Bootstrap Css -->
-    <link rel="stylesheet" href="{% static 'frontend-asset/css/bootstrap.min.css' %}">
-    <!-- Plugins -->
-    <link rel="stylesheet" href="{% static 'frontend-asset/css/helpers-plugin.css' %}" />
-    <!-- Style Css -->
-    <link rel="stylesheet" href="{% static 'frontend-asset/css/theme-style.css' %}" />
-    <!-- fontawesome Css -->
-    <link rel="stylesheet" href="{% static 'frontend-asset/fonts/fontawesome/css/all.min.css' %}" />
-    <!-- style Css -->
-    <link rel="stylesheet" href="{% static 'frontend-asset/css/flash.css' %}" />
-    <!-- jquery JS -->
-    <!-- bootstrap JS -->
-    <script src="{% static 'frontend-asset/js/jquery.slim.min.js' %}"></script>
-    <script src="{% static 'frontend-asset/js/bootstrap.bundle.min.js' %}"></script>
-</head>
+<!DOCTYPE html>
+<html lang="en">
 
-<body class="page-body home-page">
-    <header class="automotive-header-transparent pt-20">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <a class="navbar-brand" href="{% url 'frontend:index' %}">
-                    QUENIX
-                </a>
-                <button id="nav-icon2" class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-lg-auto align-items-center mr-lg-20 order-2 order-lg-1">
-                        <li class="nav-item">
-                            <a class="nav-link" href="">About Us</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <!-- Start Page Wrapper -->
-    <main class="page-wrapper">
-    {% if messages %}
-        <div class="flash animate--drop-in-fade-out">
-        {% for message in messages %}
-            <div class="flash__icon">
-                <i class="icon far fa-check-circle"></i>
-            </div>
-            
-            <p class="flash__body">
-                {{ message }}
-            </p>
-            {% endfor %}
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title>Pherious Product</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'frontend-assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'frontend-assets/assets/css/templatemo-chain-app-dev.css' %}">
+    <link rel="stylesheet" href="{% static 'frontend-assets/assets/css/animated.css' %}">
+    <link rel="stylesheet" href="{% static 'frontend-assets/assets/css/owl.css' %}">
+
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="{% url 'frontend:index' %}" class="logo">
+              <img src="{% static 'frontend-assets/assets/images/logo.png' %}" alt="Chain App Dev">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="#services">Services</a></li>
+              <li class="scroll-to-section"><a href="#about">About</a></li>
+              <li class="scroll-to-section"><a href="#pricing">Pricing</a></li>
+              <li class="scroll-to-section"><a href="#newsletter">Newsletter</a></li>
+              <li><div class="gradient-button"><a href="{% url 'accounts:login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a></div></li> 
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
         </div>
-    {% endif %}
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
