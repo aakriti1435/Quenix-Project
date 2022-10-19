@@ -16,7 +16,7 @@ class User(AbstractUser):
     email = models.EmailField("email address", null=True, blank=True)
     mobile_no = models.CharField(null=True, blank=True, max_length=255)
     profile_pic = models.ImageField(upload_to='profile_pic/', blank=True, null=True)
-    role_id = models.PositiveIntegerField(default=CUSTOMER,choices=USER_ROLE, null=True, blank=True)
+    role_id = models.PositiveIntegerField(default=ADMIN,choices=USER_ROLE, null=True, blank=True)
     status = models.PositiveIntegerField(default=ACTIVE, choices=USER_STATUS, null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     service_role = models.PositiveIntegerField(choices=SERVICE_USER_ROLE, null=True, blank=True)
