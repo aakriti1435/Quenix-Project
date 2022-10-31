@@ -21,5 +21,9 @@ urlpatterns = [
 
     ## Cities
     url(r'^cities-list/$', CitiesList, name='cities_list'),
+    
+    ## Users
+    url(r'^customers-list/$', CustomersList, name='customers_list'),
+    url(r'^service-providers-list/$', ServiceProvidersList, name='service_providers_list'),
 
 ]

@@ -13,4 +13,6 @@ urlpatterns = [
     url(r'^check-user/$', CheckUser.as_view(), name='check_user'),
     url(r'^logout/$', LogOutView.as_view(), name='logout_view'),
     url(r'^update-profile/$', UpdateProfile.as_view(), name='update_profile'),
+    url(r'^social-login/$', SocialLogin.as_view(), name='social_login'),
+    # url(r'^check-city/$', CheckCity.as_view(), name='check_city'),
 ]

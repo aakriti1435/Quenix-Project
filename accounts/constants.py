@@ -61,3 +61,10 @@ DEVICE_TYPE = ((1, 'Aandroid'), (2, 'IOS'))
 ANDROID = 1
 IOS = 2
 
+
+"""
+Social Login Types
+"""
+SOCIAL_TYPE = ((1,'Google'), (2, 'Apple'))
+GOOGLE_LOGIN = 1
+APPLE_LOGIN = 2

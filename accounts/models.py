@@ -1,3 +1,4 @@
+from email.policy import default
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from .constants import *
@@ -25,6 +26,8 @@ class User(AbstractUser):
     longitude = models.CharField(null=True, blank=True, max_length=255)
     city = models.ForeignKey('Cities', null=True, blank=True, on_delete=models.SET_NULL)
     is_profile_setup = models.BooleanField(default=False, null=True, blank=True)
+    social_id = models.CharField(null=True, blank=True, max_length=255)
+    social_type = models.PositiveIntegerField(null=True, blank=True,choices=SOCIAL_TYPE)
 
 
     class Meta:

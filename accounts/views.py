@@ -150,3 +150,22 @@ def UserGraph(request):
                 }]
             }
         return JsonResponse(chart)
+
+
+@login_required
+def CustomersList(request):
+    users = User.objects.filter(role_id=CUSTOMER).order_by('-id')
+    users = get_pagination(request, users)
+    return render(request, 'users/customers-list.html', {"head_title":"Customers Management", "users":users})
+
+
+@login_required
+def ServiceProvidersList(request):
+    users = User.objects.filter(role_id=SERVICE_PROVIDER).order_by('-id')
+    users = get_pagination(request, users)
+    return render(request, 'users/serviceproviders-list.html', {"head_title":"Customers Management", "users":users})
+
+
+
+    
+    

@@ -1,0 +1,94 @@
+{% include 'admin-includes/header.html' %}
+{% load static %}
+{% block content %}		
+
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">	
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-custom">
+                    <div class="card-header d-flex justify-content-between align-items-center card-header-custom">
+                        <h4 class="card-title">Customers Management</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <form action="{% url 'accounts:customers_list' %}" method="GET">
+                                <table class="sortable table table-responsive-md ">
+                                    <thead>
+                                        <tr>
+                                            <th><strong>Id</strong></th>
+                                            <th><strong>Title</strong></th>
+                                            <th><strong>Description</strong></th>
+                                            <th><strong>Price</strong></th>
+                                            <th><strong>Created On</strong></th>
+                                            <th><strong>Action</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input style="width: 70px;" type="text" {% if id %}value="{{id}}" {% endif %} class="form-control" name="id"></td>
+                                            <td><input type="text" {% if title %} value="{{title}}" {% endif %} class="form-control" name="title"></td>
+                                            <td><input type="text" {% if description %} value="{{description}}" {% endif %} class="form-control" name="description"></td>
+                                            <td><input type="text" {% if price %} value="{{price}}" {% endif %} class="form-control" name="price"></td>
+                                            <td><input onchange="this.form.submit()" type="date" onkeydown="return false" value="{{created_on}}" class="position-relative form-control" name="created_on"></td>
+                                            <td><button type="submit" class="btn btn-dark savebtn">Search</button></td>
+                                        </tr>
+                                    {% if users %}
+                                        {% for user in users  %}
+                                            <tr>
+                                                <td>{{user.id}}</td>
+                                                <td>{{user.full_name}}</td>
+                                                <td>{{service.description | truncatechars:80 |safe}}</td>
+                                                <td>₹{{service.price|floatformat:2}}</td>
+                                                <td>
+                                                    <script>
+                                                        var d = ConvertGTime("{{ service.created_on|date:'Y-m-d' }}","{{ service.created_on|time:'H:i' }}");
+                                                        document.write(d);
+                                                    </script>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <a href="{% url 'services:edit_service' service.id %}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                                        <a href="{% url 'services:view_service' service.id %}" class="btn btn-success shadow btn-xs sharp mr-1"><i class="fa fa-eye"></i></a>
+                                                        <a onclick="return confirm('Are you sure to delete this service?')" href="{% url 'services:delete_service' service.id %}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% else %}
+                                        <td align="center" colspan="6">No Data Found</td>
+                                    {% endif %}
+                                    </tbody>
+                                </table>
+                            </form>
+                            {% if services.has_other_services %}
+							<ul class="pagination">
+								{% if services.has_previous %}
+								<li><a href="?page={{ services.previous_page_number }}">&laquo;</a></li>
+								{% else %}
+								<li class="disabled"><span>&laquo;</span></li>
+								{% endif %}
+								{% for i in services.paginator.page_range %}
+								{% if services.number == i %}
+								<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+								{% else %}
+								<li><a href="?page={{ i }}">{{ i }}</a></li>
+								{% endif %}
+								{% endfor %}
+								{% if services.has_next %}
+								<li><a href="?page={{ services.next_page_number }}">&raquo;</a></li>
+								{% else %}
+								<li class="disabled"><span>&raquo;</span></li>
+								{% endif %}
+							</ul>
+							{% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% include 'admin-includes/footer.html' %}

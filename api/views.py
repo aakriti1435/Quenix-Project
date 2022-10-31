@@ -48,17 +48,17 @@ class GenerateOTP(APIView):
             user.temp_otp = str(random.randrange(100000, 999999))
             user.save()
         else:
-            if not request.data.get('city'):
-                return response.Response({
-                "message":"Please Select a City",
-                "status":status.HTTP_400_BAD_REQUEST
-            },status=status.HTTP_400_BAD_REQUEST)
+            # if not request.data.get('city'):
+            #     return response.Response({
+            #     "message":"Please Select a City",
+            #     "status":status.HTTP_400_BAD_REQUEST
+            # },status=status.HTTP_400_BAD_REQUEST)
             user = User.objects.create(
                 mobile_no=request.data.get('mobile_no'),
                 role_id=request.data.get('role_id'),
-                city = Cities.objects.get(id=request.data.get('city')),
-                lattitude = request.data.get('lattitude'),
-                longitude = request.data.get('longitude'),
+                # city = Cities.objects.get(id=request.data.get('city')),
+                # lattitude = request.data.get('lattitude'),
+                # longitude = request.data.get('longitude'),
                 temp_otp = str(random.randrange(100000, 999999))
             )
         try:
@@ -105,6 +105,56 @@ class VerifyOTP(APIView):
                 "status":status.HTTP_200_OK,
             }, status=status.HTTP_200_OK)
    
+   
+class SocialLogin(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, *args , **kwargs):
+        if not request.data.get('social_id'):
+            return Response({
+                "message":"Please Enter Social Id",
+                "status":status.HTTP_400_BAD_REQUEST
+            },status=status.HTTP_400_BAD_REQUEST)
+        if not request.data.get('role_id'):
+            return Response({
+                "message":"Please Enter Role Id",
+                "status":status.HTTP_400_BAD_REQUEST
+            },status=status.HTTP_400_BAD_REQUEST)
+        if not request.data.get('email'):
+            return Response({
+                "message":"Please Enter Email",
+                "status":status.HTTP_400_BAD_REQUEST
+            },status=status.HTTP_400_BAD_REQUEST)
+   
+        if User.objects.filter(Q(status=ACTIVE)|Q(status=INACTIVE),social_id=request.data.get('social_id'), role_id=request.data.get('role_id')):
+            user = User.objects.filter(Q(status=ACTIVE)|Q(status=INACTIVE),social_id=request.data.get('social_id'), role_id=request.data.get('role_id')).last()
+            message = "Login Successfully!"
+        else:
+            user = User.objects.create(
+                social_id = request.data.get('social_id'),
+                role_id = request.data.get('role_id'),
+                email = request.data.get('email'),
+                social_type = GOOGLE_LOGIN
+            )
+            message = "Registration Done Successfully!"
+        try:
+            token = Token.objects.get(user = user)
+        except:
+            token = Token.objects.create(user = user)
+        try:
+            device = Device.objects.get(user = user)
+        except Device.DoesNotExist:
+            device = Device.objects.create(user = user)
+        device.device_type = request.data.get('device_type')
+        device.device_name = request.data.get('device_name')
+        device.device_token = request.data.get('device_token')
+        device.save() 
+        return Response({
+            "message":message,
+            "data":UserSerializer(user,context={"request":request}).data,
+            "status":status.HTTP_200_OK,
+        }, status=status.HTTP_200_OK)
+            
    
 class CheckUser(APIView):
     permission_classes = (permissions.IsAuthenticated, )
@@ -167,3 +217,11 @@ class UpdateProfile(APIView):
             "status":status.HTTP_200_OK,
         }, status=status.HTTP_200_OK)            
             
+            
+# class CheckCity(APIView):
+#     permission_classes = (permissions.AllowAny, )
+    
+#     def get(self, request, *args, **kwargs):
+#         if not request.query_params.get('')
+        
+        
