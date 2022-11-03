@@ -9,6 +9,7 @@ __pycache__/
 migrations/
 media/
 quenix
+sql_files
 
 # Distribution / packaging
 .Python
