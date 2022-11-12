@@ -11,6 +11,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('frontend.urls')),
     path('api/', include('api.urls')),
+    path('services/', include('services.urls')),
     path('accounts/', include('accounts.urls', 'accounts')),
     url('^accounts/', include('django.contrib.auth.urls')),
     path('backup/', include('backup.urls') , name="Back_up"),

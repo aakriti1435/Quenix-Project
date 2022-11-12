@@ -91,6 +91,12 @@
                             <li><a href="{% url 'accounts:service_providers_list' %}">Service Providers</a></li>
                         </ul>
                     </li>
+                    <li {% if head_title == "Services Management" %}class="mm-active"{% endif %}>
+                        <a href="{% url 'services:services_list' %}" aria-expanded="false">
+                            <i class="fas fa-user-md mr-2"></i>
+                            <span class="nav-text">Services</span>
+                        </a>
+                    </li>
                     <li {% if head_title == "Backup" or head_title == "Login History" or head_title == "Cities Management" %}class="mm-active"{% endif %}>
                         <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="fas fa-cogs"></i>

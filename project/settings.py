@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_db_logger',
     'backup',
+    'services'
 ]
 
 MIDDLEWARE = [
