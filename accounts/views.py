@@ -163,9 +163,34 @@ def CustomersList(request):
 def ServiceProvidersList(request):
     users = User.objects.filter(role_id=SERVICE_PROVIDER).order_by('-id')
     users = get_pagination(request, users)
-    return render(request, 'users/serviceproviders-list.html', {"head_title":"Customers Management", "users":users})
+    return render(request, 'users/serviceproviders-list.html', {"head_title":"Service PRoviders Management", "users":users})
 
 
+@login_required
+def ChangeStatusActive(request, id):
+    user = User.objects.get(id=id)
+    user.status = ACTIVE
+    user.is_active = True
+    user.save()
+    messages.success(request, 'User Account Activated Successfully!')
+    return redirect('accounts:view_user',user.id)
 
-    
-    
+
+@login_required
+def ChangeStatusInActive(request, id):
+    user = User.objects.get(id=id)
+    user.status = INACTIVE
+    user.is_active = False
+    user.save()
+    messages.success(request, 'User Account Deactivated Successfully!')
+    return redirect('accounts:view_user',user.id)
+
+
+@login_required
+def ChangeStatusDelete(request, id):
+    user = User.objects.get(id=id)
+    user.status = DELETED
+    user.is_active = False
+    user.save()
+    messages.success(request, 'User Account Deleted Successfully!')
+    return redirect('accounts:view_user',user.id)

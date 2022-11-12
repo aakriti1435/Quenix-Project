@@ -1,0 +1,97 @@
+{% include 'admin-includes/header.html' %}
+{% load static %}
+{% block content %}		
+
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">	
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-custom">
+                    <div class="card-header d-flex justify-content-between align-items-center card-header-custom">
+                        <h4 class="card-title">Service Providers Management</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <form action="{% url 'accounts:customers_list' %}" method="GET">
+                                <table class="sortable table table-responsive-md ">
+                                    <thead>
+                                        <tr>
+                                            <th><strong>Id</strong></th>
+                                            <th><strong>Name</strong></th>
+                                            <th><strong>Mobile No.</strong></th>
+                                            <th><strong>Email</strong></th>
+                                            <th><strong>Status</strong></th>
+                                            <th><strong>Created On</strong></th>
+                                            <th><strong>Action</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% if users %}
+                                        {% for user in users  %}
+                                            <tr>
+                                                <td>{{user.id}}</td>
+                                                <td>{% if user.full_name %}{{user.full_name}}{% else %}-
+                                                    {% endif %}</td>
+                                                <td>{% if user.mobile_no %}{{user.mobile_no}}{% else %}-
+                                                    {% endif %}</td>
+                                                <td>{% if user.email %}{{user.email}}{% else %}-
+                                                    {% endif %}</td>
+                                                <td>
+                                                    {% if user.status == 1 %}
+                                                    <div class="badge badge-success">ACTIVE</div>
+                                                    {% elif user.status == 2 %}
+                                                    <div class="badge badge-warning">INACTIVE</div>
+                                                    {% else %}
+                                                    <div class="badge badge-danger">DELETED</div>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <script>
+                                                        var d = ConvertGTime("{{ user.created_on|date:'Y-m-d' }}","{{ user.created_on|time:'H:i' }}");
+                                                        document.write(d);
+                                                    </script>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <a href="{% url 'accounts:view_user' user.id %}" class="btn btn-success shadow btn-xs sharp mr-1"><i class="fa fa-eye"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% else %}
+                                        <td align="center" colspan="6">No Data Found</td>
+                                    {% endif %}
+                                    </tbody>
+                                </table>
+                            </form>
+                            {% if users.has_other_services %}
+							<ul class="pagination">
+								{% if users.has_previous %}
+								<li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+								{% else %}
+								<li class="disabled"><span>&laquo;</span></li>
+								{% endif %}
+								{% for i in users.paginator.page_range %}
+								{% if users.number == i %}
+								<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+								{% else %}
+								<li><a href="?page={{ i }}">{{ i }}</a></li>
+								{% endif %}
+								{% endfor %}
+								{% if users.has_next %}
+								<li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+								{% else %}
+								<li class="disabled"><span>&raquo;</span></li>
+								{% endif %}
+							</ul>
+							{% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% include 'admin-includes/footer.html' %}

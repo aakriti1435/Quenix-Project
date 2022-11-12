@@ -13,7 +13,7 @@ class User(AbstractUser):
     last_name = models.CharField(null=True, blank=True, max_length=255)
     full_name = models.CharField(max_length=255,null=True,blank=True)
     dob = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
-    gender = models.PositiveIntegerField(choices=GENDER, null=True, blank=True, default=MALE)
+    gender = models.PositiveIntegerField(choices=GENDER, null=True, blank=True)
     email = models.EmailField("email address", null=True, blank=True)
     mobile_no = models.CharField(null=True, blank=True, max_length=255)
     profile_pic = models.ImageField(upload_to='profile_pic/', blank=True, null=True)

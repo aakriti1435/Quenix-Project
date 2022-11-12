@@ -12,6 +12,9 @@ urlpatterns = [
     url(r'^logout/$', LogOutView.as_view(), name='logout'),
     url(r'^edit-user/(?P<id>[-\w]+)/$', EditUser, name='edit_user'),
     url(r'^view/(?P<id>[-\w]+)/$',ViewUser, name='view_user'),
+    url(r'^change-status-active/(?P<id>[-\w]+)/$',ChangeStatusActive, name='change_status_active'),
+    url(r'^change-status-inactive/(?P<id>[-\w]+)/$',ChangeStatusInActive, name='change_status_inactive'),
+    url(r'^change-status-delete/(?P<id>[-\w]+)/$',ChangeStatusDelete, name='change_status_delete'),
     url(r'^change-password/$', PasswordChange.as_view(), name='Password_Change'),
     url(r'^user-graph/$', UserGraph, name='user_graph'),
 

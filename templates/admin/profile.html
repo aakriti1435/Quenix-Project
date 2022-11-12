@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <div class="text-right float-md-right">
                             <div class="addlocation mb-3">
-                                {% if not user.status == 3%}
+                                {% if user.is_superuser %}
                                 <a class="mr-2" href="{% url 'accounts:edit_user' user.id %}">Edit Profile</a>
                                 {% endif %}
                             </div>
@@ -79,12 +79,55 @@
                                     <div class="col-12 col-sm-4 col-lg-3">
                                         <h5 class="f-w-500">Role <span class="d-none d-sm-block float-sm-right">:</span></h5>
                                     </div>
-                                    {% if user.role_id == 1 %}
-                                    <div class="col-12 col-sm-8 col-lg-9"><span>Admin</span></div>
-                                    {% else %}
-                                    <div class="col-12 col-sm-8 col-lg-9"><span>User</span></div>
-                                    {% endif %}
+                                    <div class="col-12 col-sm-8 col-lg-9">
+                                        {% if user.role_id == 1 %}
+                                        <div class="badge badge-secondary">ADMIN</div>
+                                        {% elif user.status == 2 %}
+                                        <div class="badge badge-secondary">CUSTOMER</div>
+                                        {% else %}
+                                        <div class="badge badge-secondary">SERVICE PROVIDER</div>
+                                        {% endif %}
+                                    </div>
                                 </div>
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Status <span class="d-none d-sm-block float-sm-right">:</span></h5>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-lg-9">
+                                        {% if user.status == 1 %}
+                                        <div class="badge badge-success">ACTIVE</div>
+                                        {% elif user.status == 2 %}
+                                        <div class="badge badge-warning">INACTIVE</div>
+                                        {% else %}
+                                        <div class="badge badge-danger">DELETED</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% if not user.is_superuser %}
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Gender <span class="d-none d-sm-block float-sm-right">:</span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-lg-9">
+                                        {% if user.gender %}
+                                        {% if user.gender == 1 %}MALE
+                                        {% elif user.gender == 2 %}FEMALE
+                                        {% else %}OTHER {% endif %}
+                                        {% else %}-{% endif %}
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Date Of Birth <span class="d-none d-sm-block float-sm-right">:</span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-lg-9">
+                                        {% if user.dob %}{{user.dob}}
+                                        {% else %}-{% endif %}
+                                    </div>
+                                </div>
+                                {% endif %}
                                 <div class="row mb-3 mb-sm-2">
                                     <div class="col-12 col-sm-4 col-lg-3">
                                         <h5 class="f-w-500">Created On <span class="d-none d-sm-block float-sm-right">:</span>
@@ -103,6 +146,47 @@
                 </div>
             </div>
         </div>
+
+        {% if user.role_id != 1 %}
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                <div class="btn-list border-0 d-flex justify-content-end align-items-center">
+                    {% if user.status == 3 %}
+                    <div class="addlocation mr-2 ">
+                        <a href="{% url 'accounts:change_status_active' user.id %}" class="">Active</a>
+                    </div>
+                    <div class="addlocation mr-2">
+                        <a href="{% url 'accounts:change_status_inactive' user.id %}">Inactive</a>
+                    </div>
+
+                    {% elif user.status == 1 %}
+                    <div class="addlocation mr-2">
+                        <a href="{% url 'accounts:change_status_inactive' user.id %}">Inactive</a>
+                    </div>
+                    <div class="addlocation mr-2">
+                        <a href="{% url 'accounts:change_status_delete' user.id %}">Delete</a>
+                    </div>
+
+                    {% elif user.status == 2 %}
+                    <div class="addlocation mr-2">
+                        <a href="{% url 'accounts:change_status_active' user.id %}">Active</a>
+                    </div>
+                    <div class="addlocation mr-2">
+                        <a href="{% url 'accounts:change_status_delete' user.id %}">Delete</a>
+                    </div>
+
+                    {% else %}
+                    <div class="addlocation mr-2">
+                        <a href="{% url 'accounts:change_status_delete' user.id %}">Delete</a>
+                    </div>
+                    {% endif %}
+
+                </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
 </div>
