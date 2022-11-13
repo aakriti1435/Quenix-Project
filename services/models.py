@@ -10,7 +10,6 @@ class Services(models.Model):
     created_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
     created_on = models.DateTimeField(null=True, blank=True, auto_now_add=True)
     updated_on = models.DateTimeField(null=True, blank=True, auto_now=True)
-    is_active = models.BooleanField(null=True, blank=True, default=True)
     
     class Meta:
         managed = True;

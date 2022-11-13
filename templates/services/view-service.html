@@ -1,0 +1,70 @@
+{% include "admin-includes/header.html" %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="profile-tab d-flex position-relative">
+                            <div class="profile-imgbox mx-auto mx-md-0 mr-md-4">
+                                {% if service.image %}
+                                <img src="{{ service.image.url }}" alt="image">
+                                {% endif %}
+                            </div>
+                            <div class="profile-personal-info w-100">
+                                <h4 class="text-primary mb-4">Service Information</h4>
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Service Name <span class="d-none d-sm-block float-sm-right">:</span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-lg-9">{{service.name}}
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Description <span class="d-none d-sm-block float-sm-right">:</span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-lg-9">{{service.description}}
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Created On <span class="d-none d-sm-block float-sm-right">:</span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-lg-9">
+                                        <script>
+                                            var d = ConvertGTime("{{ service.created_on|date:'Y-m-d' }}","{{ service.created_on|time:'H:i' }}");
+                                            document.write(d);
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mb-sm-2">
+                                    <div class="col-12 col-sm-4 col-lg-3">
+                                        <h5 class="f-w-500">Updated On <span class="d-none d-sm-block float-sm-right">:</span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-lg-9">
+                                        <script>
+                                            var d = ConvertGTime("{{ service.updated_on|date:'Y-m-d' }}","{{ service.updated_on|time:'H:i' }}");
+                                            document.write(d);
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+{% include "admin-includes/footer.html" %}
